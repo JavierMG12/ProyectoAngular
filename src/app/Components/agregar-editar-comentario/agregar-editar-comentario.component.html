@@ -1,1 +1,20 @@
-<p>agregar-editar-comentario works!</p>
+<h3 class="mt-3">Agregar Comentario</h3>
+<form [formGroup]="agregarcomentario" (ngSubmit)="Agregar()">
+<div class="mb-3">
+  <label for="titulo" class="form-label">Titulo</label>
+  <input type="text" class="form-control" id="titulo"
+  formControlName="titulo">
+  <span *ngIf="agregarcomentario.get('titulo')?.invalid &&agregarcomentario.get('titulo')?.touched" class="text-danger"> El <strong>titulo</strong> es requerido </span>
+</div>
+<div class="mb-3">
+  <label for="creador" class="form-label">Creador</label>
+  <input type="text" class="form-control" id="creador" formControlName="creador">
+  <span *ngIf="agregarcomentario.get('creador')?.invalid &&agregarcomentario.get('creador')?.touched" class="text-danger"> El <strong>creador</strong> es requerido </span>
+</div>
+<div class="mb-3">
+  <label for="Texto" class="form-label">Comentario</label>
+  <textarea class="form-control" id="Texto" rows="8" formControlName="texto"></textarea>
+</div>
+<button type="button" class="btn btn-secondary" routerLink="/">Regresar</button>
+<button type="submit" [disabled]="agregarcomentario.invalid" class="btn btn-primary float-end">Aceptar</button>
+</form>
